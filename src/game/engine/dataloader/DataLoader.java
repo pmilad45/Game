@@ -1,10 +1,5 @@
 package game.engine.dataloader;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-
 import game.engine.Role;
 import game.engine.cards.Card;
 import game.engine.cards.ConfusionCard;
@@ -13,8 +8,8 @@ import game.engine.cards.ShieldCard;
 import game.engine.cards.StartOverCard;
 import game.engine.cards.SwapperCard;
 import game.engine.cells.Cell;
-import game.engine.cells.ConveyorBelt;
 import game.engine.cells.ContaminationSock;
+import game.engine.cells.ConveyorBelt;
 import game.engine.cells.DoorCell;
 import game.engine.exceptions.InvalidCSVFormat;
 import game.engine.monsters.Dasher;
@@ -22,6 +17,10 @@ import game.engine.monsters.Dynamo;
 import game.engine.monsters.Monster;
 import game.engine.monsters.MultiTasker;
 import game.engine.monsters.Schemer;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class DataLoader {
 
@@ -67,7 +66,7 @@ public class DataLoader {
             } catch (InvalidCSVFormat e) {
                 br.close();
                 throw e;
-            } catch (Exception e) {
+            } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e) {
                 br.close();
                 throw new InvalidCSVFormat(line);
             }
@@ -84,28 +83,31 @@ public class DataLoader {
             if (line.trim().isEmpty()) continue;
             String[] parts = line.split(",");
             try {
-                if (parts.length == 3) {
-                    // DoorCell: name, role, energy
-                    String name = parts[0].trim();
-                    Role role = Role.valueOf(parts[1].trim().toUpperCase());
-                    int energy = Integer.parseInt(parts[2].trim());
-                    cells.add(new DoorCell(name, role, energy));
-                } else if (parts.length == 2) {
-                    // TransportCell: name, effect
-                    String name = parts[0].trim();
-                    int effect = Integer.parseInt(parts[1].trim());
-                    if (effect > 0) {
-                        cells.add(new ConveyorBelt(name, effect));
-                    } else {
-                        cells.add(new ContaminationSock(name, effect));
-                    }
-                } else {
-                    throw new InvalidCSVFormat(line);
+                switch (parts.length) {
+                    case 3:
+                        // DoorCell: name, role, energy
+                        String name = parts[0].trim();
+                        Role role = Role.valueOf(parts[1].trim().toUpperCase());
+                        int energy = Integer.parseInt(parts[2].trim());
+                        cells.add(new DoorCell(name, role, energy));
+                        break;
+                    case 2:
+                        // TransportCell: name, effect
+                        String name2 = parts[0].trim();
+                        int effect = Integer.parseInt(parts[1].trim());
+                        if (effect > 0) {
+                            cells.add(new ConveyorBelt(name2, effect));
+                        } else {
+                            cells.add(new ContaminationSock(name2, effect));
+                        }
+                        break;
+                    default:
+                        throw new InvalidCSVFormat(line);
                 }
             } catch (InvalidCSVFormat e) {
                 br.close();
                 throw e;
-            } catch (Exception e) {
+            } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e) {
                 br.close();
                 throw new InvalidCSVFormat(line);
             }
@@ -156,7 +158,7 @@ public class DataLoader {
             } catch (InvalidCSVFormat e) {
                 br.close();
                 throw e;
-            } catch (Exception e) {
+            } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e) {
                 br.close();
                 throw new InvalidCSVFormat(line);
             }

@@ -1,6 +1,6 @@
 package game.engine;
 
-public class Constants {
+public final class Constants {
 	
 	//Board constants:
 	public static final int BOARD_SIZE = 100;
@@ -21,7 +21,7 @@ public class Constants {
 	
 	//Monster constants:
 	public static final int MULTITASKER_BONUS = 200;
-	public static int SCHEMER_STEAL = 10;
+	public static final int SCHEMER_STEAL = 10;
 	
 	//Cell constants:
 	public static final int SLIP_PENALTY = 100;

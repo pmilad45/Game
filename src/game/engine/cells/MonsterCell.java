@@ -13,7 +13,7 @@ public class MonsterCell extends Cell{
 
     //getters and setters
 
-    public Monster getMonster(){
+    public Monster getCellMonster(){
         return cellMonster;
     }
 }

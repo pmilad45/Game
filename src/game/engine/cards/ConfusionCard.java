@@ -4,7 +4,7 @@ public class ConfusionCard extends Card{
 	private int duration;
 	private static final boolean lucky = false;
 	
-	ConfusionCard(String name, String description, int rarity, int duration){
+	public ConfusionCard(String name, String description, int rarity, int duration){
 		super(name,description,rarity,lucky);
 		this.duration = duration;
 		
@@ -12,4 +12,11 @@ public class ConfusionCard extends Card{
 	}
 	
 
+	public int getDuration(){
+		return duration;
+	}
+
+	public void setDuration(int duration){
+		this.duration = duration;
+	}
 }
