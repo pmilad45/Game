@@ -21,4 +21,14 @@ public class StartOverCard extends Card{
 		}
 	}
 
+	@Override
+	public void performAction(Monster player, Monster target){
+		if(isLucky()){
+			target.setPosition(Constants.STARTING_POSITION);
+		}
+		else{
+			player.setPosition(Constants.STARTING_POSITION);
+		}
+	}
+
 }

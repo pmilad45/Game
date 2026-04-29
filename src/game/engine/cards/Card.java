@@ -33,10 +33,18 @@ public abstract class Card {
 		return lucky;
 	}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
 
 	public abstract void performAction(Monster player, Monster opponent);
 
+=======
+
+	public abstract void performAction(Monster player, Monster opponent);
+
+	
+
+>>>>>>> Stashed changes
 	
 
 	

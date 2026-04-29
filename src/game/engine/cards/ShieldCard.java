@@ -1,5 +1,6 @@
 package game.engine.cards;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 public class ShieldCard extends Card{
 	private static final boolean lucky = true;
@@ -8,6 +9,8 @@ public class ShieldCard extends Card{
 	 }
 
 =======
+=======
+>>>>>>> Stashed changes
 import game.engine.monsters.*;
 public class ShieldCard extends Card {
 	

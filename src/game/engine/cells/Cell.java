@@ -33,5 +33,8 @@ public class Cell {
 		setMonster(landingMonster);
 	}
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
