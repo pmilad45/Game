@@ -25,5 +25,16 @@ public class Cell {
 	public void setMonster(Monster monster) {
 		this.monster = monster;
 	}
+<<<<<<< Updated upstream
 	
+=======
+
+	public void onLand(Monster landingMonster, Monster opponentMonster){
+		setMonster(landingMonster);
+	}
+
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 }

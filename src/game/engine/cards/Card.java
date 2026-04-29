@@ -1,5 +1,5 @@
 package game.engine.cards;
-
+import game.engine.monsters.*;
 public abstract class Card {
 	private final String name;
 	private final  String description;
@@ -32,5 +32,22 @@ public abstract class Card {
 	public boolean isLucky() {
 		return lucky;
 	}
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+	public abstract void performAction(Monster player, Monster opponent);
+
+=======
+
+	public abstract void performAction(Monster player, Monster opponent);
+
+	
+
+>>>>>>> Stashed changes
+	
+
+	
+>>>>>>> Stashed changes
 }
 
