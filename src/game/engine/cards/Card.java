@@ -34,6 +34,7 @@ public abstract class Card {
 	}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
 
 	public abstract void performAction(Monster player, Monster opponent);
@@ -41,6 +42,12 @@ public abstract class Card {
 =======
 
 	public abstract void performAction(Monster player, Monster opponent);
+=======
+
+	public abstract void performAction(Monster player, Monster opponent);
+
+	
+>>>>>>> Stashed changes
 
 	
 

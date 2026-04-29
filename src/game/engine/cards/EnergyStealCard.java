@@ -1,6 +1,7 @@
 package game.engine.cards;
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 public class EnergyStealCard extends Card {
  private int energy;
@@ -19,6 +20,8 @@ public int getEnergy() {
 	return energy;
 }
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 import game.engine.interfaces.CanisterModifier;
@@ -56,6 +59,9 @@ public class EnergyStealCard extends Card implements CanisterModifier {
 		monster.alterEnergy (canisterValue);
 	}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

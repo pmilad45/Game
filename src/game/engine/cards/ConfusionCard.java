@@ -20,10 +20,13 @@ public class ConfusionCard extends Card{
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	public void setDuration(int duration){
 		this.duration = duration;
 	}
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 	@Override
@@ -38,6 +41,9 @@ public class ConfusionCard extends Card{
 	
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
