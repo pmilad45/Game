@@ -1,9 +1,9 @@
 package game.engine.cards;
 
 public class SwapperCard extends Card {
-	private static final boolean lucky = true;
-	public SwapperCard(String name, String description, int rarity){
-		super(name,description,rarity, lucky);
 
-}
+	public SwapperCard(String name, String description, int rarity) {
+		super(name, description, rarity, true);
+	}
+	
 }

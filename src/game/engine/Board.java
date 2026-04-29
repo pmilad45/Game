@@ -3,12 +3,10 @@ package game.engine;
 import java.util.ArrayList;
 
 import game.engine.cards.Card;
-import game.engine.cells.Cell;
+import game.engine.cells.*;
 import game.engine.monsters.Monster;
 
 public class Board {
-<<<<<<< Updated upstream
-=======
 	private Cell[][] boardCells;
 	private static ArrayList<Monster> stationedMonsters; 
 	private static ArrayList<Card> originalCards;
@@ -86,7 +84,6 @@ public class Board {
 	public static void setStationedMonsters(ArrayList<Monster> stationedMonsters) {
 		Board.stationedMonsters = stationedMonsters;
 	}
->>>>>>> Stashed changes
 
     private final Cell[][] boardCells;
     private static ArrayList<Monster> stationedMonsters;
@@ -123,4 +120,16 @@ public class Board {
     public static void setCards(ArrayList<Card> cards) {
         Board.cards = cards;
     }
+
+	public static ArrayList<Card> getOriginalCards() {
+		return originalCards;
+	}
+	
+	public static ArrayList<Card> getCards() {
+		return cards;
+	}
+	
+	public static void setCards(ArrayList<Card> cards) {
+		Board.cards = cards;
+	}
 }
