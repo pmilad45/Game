@@ -1,15 +1,13 @@
 package game.engine.cells;
-//all comments are written for clarification and organization
 
-//imports 
 import game.engine.monsters.Monster;
 import game.engine.Board;
 import game.engine.Role;
 import game.engine.interfaces.CanisterModifier;
 import java.util.ArrayList;
 
-//class and constructor
 public class DoorCell extends Cell implements CanisterModifier {
+
     private final Role role;
     private final int energy;    
     private boolean activated;
@@ -115,6 +113,5 @@ public class DoorCell extends Cell implements CanisterModifier {
 			}
 		}
 		activated = anyEnergyChanged;
-	}
 
 }

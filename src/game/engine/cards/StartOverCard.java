@@ -2,9 +2,10 @@ package game.engine.cards;
 import game.engine.Constants;
 import game.engine.monsters.*;
 
-public class StartOverCard extends Card{
-	public StartOverCard(String name, String description, int rarity, boolean lucky){
-		super(name,description,rarity,lucky); 
+public class StartOverCard extends Card {
+
+	public StartOverCard(String name, String description, int rarity, boolean lucky) {
+		super(name, description, rarity, lucky);
 	}
 	
 	@Override
@@ -15,5 +16,5 @@ public class StartOverCard extends Card{
 		else{
 			player.setPosition(Constants.STARTING_POSITION);
 		}
-	}
+  }
 }

@@ -1,22 +1,22 @@
 package game.engine.cards;
 import game.engine.monsters.*;
+
 public abstract class Card {
-	private final String name;
-	private final  String description;
-	private final int rarity;
-	private final boolean lucky;
+	private String name;
+	private String description;
+	private int rarity;
+	private boolean lucky;
+  
+  public abstract void performAction(Monster player, Monster opponent);
 	
-	public Card(String name, String description, int rarity, boolean lucky){
+	public Card(String name, String description, int rarity, boolean lucky) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.rarity = rarity;
 		this.lucky = lucky;
-		
-		
-		
-}
-
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -28,33 +28,9 @@ public abstract class Card {
 	public int getRarity() {
 		return rarity;
 	}
-
+	
 	public boolean isLucky() {
 		return lucky;
 	}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
 
-	public abstract void performAction(Monster player, Monster opponent);
-
-=======
-
-	public abstract void performAction(Monster player, Monster opponent);
-=======
-
-	public abstract void performAction(Monster player, Monster opponent);
-
-	
->>>>>>> Stashed changes
-
-	
-
->>>>>>> Stashed changes
-	
-
-	
->>>>>>> Stashed changes
 }
-

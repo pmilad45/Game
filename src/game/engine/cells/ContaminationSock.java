@@ -2,8 +2,6 @@ package game.engine.cells;
 
 import game.engine.Constants;
 import game.engine.interfaces.CanisterModifier;
-import game.engine.monsters.*;
-import game.engine.Constants;
 
 
 public class ContaminationSock extends TransportCell implements CanisterModifier{
@@ -26,3 +24,4 @@ public class ContaminationSock extends TransportCell implements CanisterModifier
 	
 
 }
+

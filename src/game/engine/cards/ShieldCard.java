@@ -1,7 +1,6 @@
 package game.engine.cards;
 import game.engine.monsters.*;
 
-
 public class ShieldCard extends Card {
 	
 	public ShieldCard(String name, String description, int rarity) {

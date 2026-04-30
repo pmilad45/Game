@@ -2,19 +2,15 @@ package game.engine.cards;
 import game.engine.Role;
 import game.engine.monsters.*;
 
-public class ConfusionCard extends Card{
+public class ConfusionCard extends Card {
 	private int duration;
-	private static final boolean lucky = false;
 	
-	public ConfusionCard(String name, String description, int rarity, int duration){
-		super(name,description,rarity,lucky);
+	public ConfusionCard(String name, String description, int rarity, int duration) {
+		super(name, description, rarity, false);
 		this.duration = duration;
-		
-		
 	}
 	
-
-	public int getDuration(){
+	public int getDuration() {
 		return duration;
 	}
 
@@ -29,6 +25,7 @@ public class ConfusionCard extends Card{
 		target.setRole(p);
 
 		player.setConfusionTurns(duration);
-		target.setConfusionTurns(duration);
+		target.setConfusionTurns(duration);  
 	}
+  
 }
