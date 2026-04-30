@@ -1,29 +1,4 @@
 package game.engine.cards;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-public class EnergyStealCard extends Card {
- private int energy;
- private static final boolean lucky= true;
- 
-	public EnergyStealCard(String name, String description, int rarity, int energy){
-	 super (name,description,rarity,lucky);
-	 this.energy = energy;
-	 
-	 
-	  
-	 
- }
-
-public int getEnergy() {
-	return energy;
-}
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 import game.engine.interfaces.CanisterModifier;
 import game.engine.monsters.*;
 
@@ -58,13 +33,6 @@ public class EnergyStealCard extends Card implements CanisterModifier {
 	public void modifyCanisterEnergy(Monster monster , int canisterValue){
 		monster.alterEnergy (canisterValue);
 	}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 

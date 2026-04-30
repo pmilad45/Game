@@ -7,10 +7,6 @@ public class StartOverCard extends Card{
 		super(name,description,rarity,lucky); 
 	}
 	
-	
-	
-	
-
 	@Override
 	public void performAction(Monster player, Monster target){
 		if(isLucky()){
@@ -20,25 +16,4 @@ public class StartOverCard extends Card{
 			player.setPosition(Constants.STARTING_POSITION);
 		}
 	}
-
-	@Override
-	public void performAction(Monster player, Monster target){
-		if(isLucky()){
-			target.setPosition(Constants.STARTING_POSITION);
-		}
-		else{
-			player.setPosition(Constants.STARTING_POSITION);
-		}
-	}
-
-	@Override
-	public void performAction(Monster player, Monster target){
-		if(isLucky()){
-			target.setPosition(Constants.STARTING_POSITION);
-		}
-		else{
-			player.setPosition(Constants.STARTING_POSITION);
-		}
-	}
-
 }

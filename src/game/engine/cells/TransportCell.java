@@ -10,14 +10,6 @@ public abstract class TransportCell extends Cell {
         this.effect = effect;
     }
 
-<<<<<<< Updated upstream
-
-    //getter
-
-    public int getEffect(){
-        return effect;
-    }
-=======
 	public int getEffect() {
 		return effect;
 	}
@@ -33,5 +25,4 @@ public abstract class TransportCell extends Cell {
 		monster.setPosition(monster.getPosition() + effect);
 	}
 	
->>>>>>> Stashed changes
 }

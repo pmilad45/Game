@@ -18,17 +18,10 @@ public class ConfusionCard extends Card{
 		return duration;
 	}
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 	public void setDuration(int duration){
 		this.duration = duration;
 	}
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
 	@Override
 	public void performAction(Monster player, Monster target){
 		Role p = player.getRole();
@@ -38,13 +31,4 @@ public class ConfusionCard extends Card{
 		player.setConfusionTurns(duration);
 		target.setConfusionTurns(duration);
 	}
-	
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
