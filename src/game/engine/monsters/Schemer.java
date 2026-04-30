@@ -1,9 +1,8 @@
 package game.engine.monsters;
 
-import java.util.ArrayList;
-
 import game.engine.Board;
 import game.engine.Constants;
+import java.util.ArrayList;
 import game.engine.Role;
 
 public class Schemer extends Monster {
@@ -13,9 +12,9 @@ public class Schemer extends Monster {
 	}
 
 	private int stealEnergyFrom(Monster target) {
-		int e = target.getEnergy();
-		int take = Math.min(e, Constants.SCHEMER_STEAL);
-		if (take == 0 && e == 0) {
+		int energy = target.getEnergy();
+		int take = Math.min(energy, Constants.SCHEMER_STEAL);
+		if (take == 0 && energy == 0) {
 			if (target instanceof Schemer) {
 				target.setEnergy(10);
 			}

@@ -1,10 +1,13 @@
 package game.engine.cards;
+import game.engine.monsters.*;
 
 public abstract class Card {
 	private String name;
 	private String description;
 	private int rarity;
 	private boolean lucky;
+  
+  public abstract void performAction(Monster player, Monster opponent);
 	
 	public Card(String name, String description, int rarity, boolean lucky) {
 		super();
@@ -29,5 +32,5 @@ public abstract class Card {
 	public boolean isLucky() {
 		return lucky;
 	}
-	
+
 }
