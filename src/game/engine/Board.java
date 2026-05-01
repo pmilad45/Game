@@ -5,6 +5,7 @@ import java.util.Collections;
 
 import game.engine.cards.Card;
 import game.engine.cells.*;
+import game.engine.exceptions.InvalidMoveException;
 import game.engine.monsters.Monster;
 
 public class Board {
@@ -52,6 +53,44 @@ public class Board {
 			return null;
 		}
 		return cards.remove(0);
+	}
+
+	public void moveMonster(Monster currentMonster, int roll, Monster opponentMonster) throws InvalidMoveException {
+		int oldPos = currentMonster.getPosition();
+		currentMonster.move(roll);
+		Cell landed = getCell(currentMonster.getPosition());
+		landed.onLand(currentMonster, opponentMonster);
+		if (currentMonster.getPosition() == opponentMonster.getPosition()) {
+			currentMonster.setPosition(oldPos);
+			throw new InvalidMoveException();
+		}
+		updateMonsterPositions(currentMonster, opponentMonster);
+		if (currentMonster.isConfused()) {
+			currentMonster.decrementConfusion();
+		}
+	}
+
+	private void updateMonsterPositions(Monster player, Monster opponent) {
+		for (int r = 0; r < Constants.BOARD_ROWS; r++) {
+			for (int c = 0; c < Constants.BOARD_COLS; c++) {
+				Cell cl = boardCells[r][c];
+				if (cl != null) {
+					cl.setMonster(null);
+				}
+			}
+		}
+		if (player != null) {
+			Cell c0 = getCell(player.getPosition());
+			if (c0 != null) {
+				c0.setMonster(player);
+			}
+		}
+		if (opponent != null) {
+			Cell c1 = getCell(opponent.getPosition());
+			if (c1 != null) {
+				c1.setMonster(opponent);
+			}
+		}
 	}
 
 	/** Same linear index ↔ row,col mapping as Milestone2PublicTests / moveMonster helpers. */
@@ -148,6 +187,8 @@ public class Board {
  		}
 	}
 
+
+
     public Cell[][] getBoardCells() {
         return boardCells;
     }
@@ -171,8 +212,4 @@ public class Board {
 	public static void setCards(ArrayList<Card> cards) {
 		Board.cards = cards;
 	}
-
-    public void setBoardCells(Cell[][] boardCells) {
-        this.boardCells = boardCells;
-    }
 }

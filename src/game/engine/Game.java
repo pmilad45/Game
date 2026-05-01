@@ -1,9 +1,11 @@
 package game.engine;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import game.engine.cards.Card;
 import game.engine.dataloader.DataLoader;
 import game.engine.exceptions.OutOfEnergyException;
 import game.engine.monsters.*;
@@ -16,20 +18,24 @@ public class Game {
 	private Monster current;
 	
 	public Game(Role playerRole) throws IOException {
-		this.board = new Board(DataLoader.readCards());
+		ArrayList<Card> loadedCards = DataLoader.readCards();
+		this.board = new Board(loadedCards);
+		try {
+			Field originalCardsField = Board.class.getDeclaredField("originalCards");
+			originalCardsField.setAccessible(true);
+			originalCardsField.set(null, loadedCards);
+			Board.reloadCards();
+		} catch (NoSuchFieldException | IllegalAccessException e) {
+			throw new RuntimeException(e);
+		}
 
 		this.allMonsters = DataLoader.readMonsters();
 
-		this.player = selectRandomMonsterByRole(playerRole);
-		this.opponent = selectRandomMonsterByRole(playerRole == Role.SCARER ? Role.LAUGHER : Role.SCARER);
+		Monster selectedPlayer = selectRandomMonsterByRole(playerRole);
+		Monster selectedOpponent = selectRandomMonsterByRole(playerRole == Role.SCARER ? Role.LAUGHER : Role.SCARER);
+		this.player = createMonsterCopy(selectedPlayer);
+		this.opponent = createMonsterCopy(selectedOpponent);
 		this.current = player;
-
-		if (player != null) {
-			allMonsters.remove(player);
-		}
-		if (opponent != null) {
-			allMonsters.remove(opponent);
-		}
 
 		Board.setStationedMonsters(allMonsters);
 		board.initializeBoard(DataLoader.readCells());
@@ -102,6 +108,29 @@ public class Game {
 	    		.filter(m -> m.getRole() == role)
 	    		.findFirst()
 	    		.orElse(null);
+	}
+
+	private Monster createMonsterCopy(Monster source) {
+		if (source == null) {
+			return null;
+		}
+		String name = source.getName();
+		String description = source.getDescription();
+		Role role = source.getRole();
+		int energy = source.getEnergy();
+		if (source instanceof Dynamo) {
+			return new Dynamo(name, description, role, energy);
+		}
+		if (source instanceof Dasher) {
+			return new Dasher(name, description, role, energy);
+		}
+		if (source instanceof MultiTasker) {
+			return new MultiTasker(name, description, role, energy);
+		}
+		if (source instanceof Schemer) {
+			return new Schemer(name, description, role, energy);
+		}
+		return null;
 	}
 
 	private void usePowerup() throws OutOfEnergyException {

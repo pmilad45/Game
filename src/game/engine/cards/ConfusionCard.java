@@ -14,10 +14,6 @@ public class ConfusionCard extends Card {
 		return duration;
 	}
 
-	public void setDuration(int duration){
-		this.duration = duration;
-	}
-
 	@Override
 	public void performAction(Monster player, Monster target){
 		Role p = player.getRole();
