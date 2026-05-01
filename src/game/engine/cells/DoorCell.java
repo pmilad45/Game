@@ -38,8 +38,6 @@ public class DoorCell extends Cell implements CanisterModifier {
     }
 
 
-    //must overridde canister modifier:
-    @Override
     public void modifyEnergy (Monster monster){
         if(activated != true){
             if(this.getRole() == role){
@@ -113,5 +111,7 @@ public class DoorCell extends Cell implements CanisterModifier {
 			}
 		}
 		activated = anyEnergyChanged;
+
+	}
 
 }

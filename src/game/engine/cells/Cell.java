@@ -19,6 +19,10 @@ public class Cell {
 		return monster;
 	}
 
+	public boolean isOccupied() {
+		return monster != null;
+	}
+
 	public void setMonster(Monster monster) {
 		this.monster = monster;
 	}

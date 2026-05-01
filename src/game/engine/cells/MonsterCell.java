@@ -14,7 +14,10 @@ public class MonsterCell extends Cell {
 		return cellMonster;
 	}
 
-	private void onLand(Monster landingMonster, Monster opponentMonster) {
+	@Override
+	public void onLand(Monster landingMonster, Monster opponentMonster) {
+		super.onLand(landingMonster, opponentMonster);
+
 		if (cellMonster == null || landingMonster == null) {
 			return;
 		}
