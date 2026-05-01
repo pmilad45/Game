@@ -1,24 +1,16 @@
 package game.engine.monsters;
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
 import game.engine.Board;
 import game.engine.Constants;
->>>>>>> Stashed changes
-import game.engine.Role;
 import java.util.ArrayList;
+import game.engine.Role;
 
 public class Schemer extends Monster {
-	
-	public Schemer(String name, String description, Role role, int energy){
+
+	public Schemer(String name, String description, Role role, int energy) {
 		super(name, description, role, energy);
 	}
 
-<<<<<<< Updated upstream
-=======
 	private int stealEnergyFrom(Monster target) {
 		int energy = target.getEnergy();
 		int take = Math.min(energy, Constants.SCHEMER_STEAL);
@@ -57,5 +49,4 @@ public class Schemer extends Monster {
 	int applyTypeEnergyDelta(int delta) {
 		return delta + Constants.SCHEMER_STEAL;
 	}
->>>>>>> Stashed changes
 }
