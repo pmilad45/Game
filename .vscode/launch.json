@@ -1,0 +1,13 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "java",
+			"name": "DoorDasH GUI",
+			"request": "launch",
+			"mainClass": "game.gui.Main",
+			"projectName": "DoorDashM1",
+			"vmArgs": "--module-path \"${env:JAVA_FX_HOME}\" --add-modules javafx.controls,javafx.graphics,javafx.base"
+		}
+	]
+}

@@ -9,14 +9,14 @@ public class CardCell extends Cell {
 	public CardCell(String name) {
         super(name);
     }
-
-	@Override
-	public void onLand(Monster landingMonster, Monster opponentMonster) {
-		super.onLand(landingMonster, opponentMonster);
-		Card drawn = Board.drawCard();
-		if (drawn != null) {
-			drawn.performAction(landingMonster, opponentMonster);
-		}
-	}
-
+    
+    @Override
+    public void onLand(Monster landingMonster, Monster opponentMonster) {
+    	super.onLand(landingMonster, opponentMonster);
+    	
+        Card card = Board.drawCard();
+        Board.setLastDrawnCard(card);
+        card.performAction(landingMonster, opponentMonster);
+    }
+   
 }

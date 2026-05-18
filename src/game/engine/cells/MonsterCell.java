@@ -15,23 +15,26 @@ public class MonsterCell extends Cell {
 	}
 
 	@Override
-	public void onLand(Monster landingMonster, Monster opponentMonster) {
+    public void onLand(Monster landingMonster, Monster opponentMonster) {
 		super.onLand(landingMonster, opponentMonster);
+		
+		// Same role: Use landing monster's powerup!
+        if (cellMonster.getRole() == landingMonster.getRole()) {
+        	System.out.println(landingMonster.getName() + " encountered ally " + cellMonster.getName() + "!");
+        	landingMonster.executePowerupEffect(opponentMonster);
+        }
+        
+        // Different role: Swap if landing monster has more energy
+        else {
+        	if (landingMonster.getEnergy() > cellMonster.getEnergy()) {
+        	    int landingEnergy = landingMonster.getEnergy();
+        	    int cellEnergy = cellMonster.getEnergy();
+        	    int diff = landingEnergy - cellEnergy;
 
-		if (cellMonster == null || landingMonster == null) {
-			return;
-		}
-
-		if (cellMonster.getRole() == landingMonster.getRole()) {
-			landingMonster.executePowerupEffect(opponentMonster);
-			return;
-		}
-
-		if (landingMonster.getEnergy() > cellMonster.getEnergy()) {
-			int transferredEnergy = landingMonster.getEnergy() - cellMonster.getEnergy();
-			cellMonster.alterEnergy(transferredEnergy);
-			landingMonster.alterEnergy(-transferredEnergy);
-		}
-	}
-
+        	    landingMonster.alterEnergy(-diff); // shield will block this if active
+        	    cellMonster.alterEnergy(diff);     // cell monster always gets the gain
+        	    System.out.println("Energy swapped between " + landingMonster.getName() + " and " + cellMonster.getName());
+        	}
+        }
+    }
 }

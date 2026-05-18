@@ -19,16 +19,15 @@ public class Cell {
 		return monster;
 	}
 
-	public boolean isOccupied() {
-		return monster != null;
-	}
-
 	public void setMonster(Monster monster) {
 		this.monster = monster;
 	}
 
-	public void onLand(Monster landingMonster, Monster opponentMonster){
-		setMonster(landingMonster);
+	public boolean isOccupied() {
+		return monster != null;
 	}
-
+	
+	public void onLand(Monster landingMonster, Monster opponentMonster) {
+		this.setMonster(landingMonster);
+	}
 }
