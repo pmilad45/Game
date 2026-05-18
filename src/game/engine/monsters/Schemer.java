@@ -2,51 +2,37 @@ package game.engine.monsters;
 
 import game.engine.Board;
 import game.engine.Constants;
-import java.util.ArrayList;
 import game.engine.Role;
 
 public class Schemer extends Monster {
-
+	
 	public Schemer(String name, String description, Role role, int energy) {
 		super(name, description, role, energy);
 	}
-
-	private int stealEnergyFrom(Monster target) {
-		int energy = target.getEnergy();
-		int take = Math.min(energy, Constants.SCHEMER_STEAL);
-		if (take == 0 && energy == 0) {
-			if (target instanceof Schemer) {
-				target.setEnergy(10);
-			}
-			return 0;
-		}
-		if (take <= 0) {
-			return 0;
-		}
-		target.alterEnergy(-take);
-		return take;
+	
+	@Override
+	public void setEnergy(int energy) {
+		super.setEnergy(energy + Constants.SCHEMER_STEAL);
 	}
 
 	@Override
 	public void executePowerupEffect(Monster opponentMonster) {
-		ArrayList<Monster> sm = Board.getStationedMonsters();
-		if (sm == null) {
-			return;
-		}
-		int rawTotal = 0;
-		rawTotal += stealEnergyFrom(opponentMonster);
-		for (Monster m : sm) {
-			if (m != this) {
-				rawTotal += stealEnergyFrom(m);
-			}
-		}
-		if (rawTotal > 0) {
-			alterEnergy(rawTotal);
-		}
+	    System.out.println(getName() + " uses Chain Attack!");
+	    int totalStolen = stealEnergyFrom(opponentMonster);
+
+	    for (Monster target : Board.getStationedMonsters()) {
+	        totalStolen += stealEnergyFrom(target);
+	        System.out.println("  -> Stole from " + target.getName());
+	    }
+
+	    this.setEnergy(this.getEnergy() + totalStolen);
+	    System.out.println("Total stolen: " + totalStolen + " energy!");
+	}
+	
+	private int stealEnergyFrom(Monster target) {
+	    int stolen = Math.min(Constants.SCHEMER_STEAL, target.getEnergy());
+	    target.setEnergy(target.getEnergy() - stolen);
+	    return stolen;
 	}
 
-	@Override
-	int applyTypeEnergyDelta(int delta) {
-		return delta + Constants.SCHEMER_STEAL;
-	}
 }
